@@ -1,0 +1,365 @@
+---
+title: "ACTIVITY#2"
+author: "BRIAN KENNETH SOLAS"
+date: "2024-02-13"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library(rvest)
+library(polite)
+library(httr)
+library(dplyr)
+
+url_MnM <- 'https://www.imdb.com/title/tt0356910/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_MnM,user_agent="Educational")
+
+for (url in url_MnM){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_MnM <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_MnM
+
+```
+```{r}
+
+url_mDick <- 'https://www.imdb.com/title/tt1694508/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_mDick,user_agent="Educational")
+
+for (url in url_mDick){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_mDick <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_mDick
+
+```
+
+
+```{r}
+url_TnJ1 <- 'https://www.imdb.com/title/tt0105616/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_TnJ1,user_agent="Educational")
+
+for (url in url_TnJ1){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_TnJ1 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_TnJ1
+
+```
+```{r}
+
+url_TnJ2 <- 'https://www.imdb.com/title/tt0487176/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_TnJ2,user_agent="Educational")
+
+for (url in url_TnJ2){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_TnJ2 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_TnJ2
+
+```
+
+
+```{r}
+
+url_TnJ3 <- 'https://www.imdb.com/title/tt1114698/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_TnJ3,user_agent = "Educational")
+
+for (url in url_TnJ3){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_TnJ3 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_TnJ3
+
+
+```
+
+```{r}
+
+url_TnJ4<- 'https://www.imdb.com/title/tt2027255/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_TnJ4,user_agent = "Educational")
+
+for (url in url_TnJ4){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_TnJ4 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_TnJ4
+
+
+
+```
+
+```{r}
+
+url_TnJ5<- 'https://www.imdb.com/title/tt6803390/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_TnJ5,user_agent = "Educational")
+
+for (url in url_TnJ5){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_TnJ5 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_TnJ5
+
+```
+
+
+```{r}
+
+url_C1<- 'https://www.imdb.com/title/tt0317219/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_C1,user_agent = "Educational")
+
+for (url in url_C1){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_C1 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_C1
+
+```
+
+
+```{r}
+
+url_C2<- 'https://www.imdb.com/title/tt1216475/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_C2,user_agent = "Educational")
+
+for (url in url_C2){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_C2 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_C2
+
+```
+
+```{r}
+
+url_C3<- 'https://www.imdb.com/title/tt3606752/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_C3,user_agent = "Educational")
+
+for (url in url_C3){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_C3 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_C3
+
+```
+
+
+```{r}
+
+url_ATLA1<- 'https://www.imdb.com/title/tt0417299/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_TnJ9,user_agent = "Educational")
+
+for (url in url_ATLA1){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_ATLA1 <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_ATLA1
+
+```
+
+```{r}
+
+url_OS<- 'https://www.imdb.com/title/tt0417299/reviews/?ref_=tt_ql_2'
+
+session <- bow(url_OS,user_agent = "Educational")
+
+for (url in url_OS){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more_control")%>%html_text()
+}
+
+Movie_OS <- data.frame(
+  Name = names[1:25],
+  Date = date[1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+Movie_OS
+
+```
+
+```{r}
+
+SOLAS_Activity2 <- rbind(Movie_ATLA1, Movie_C1, Movie_C2, Movie_C3, Movie_mDick, Movie_MnM, Movie_OS, Movie_TnJ1, Movie_TnJ2, Movie_TnJ3, Movie_TnJ4, Movie_TnJ5)
+
+SOLAS_Activity2 <- as.data.frame(SOLAS_Activity2)
+
+SOLAS_Activity2
+
+```
+
