@@ -1,0 +1,603 @@
+---
+title: "ACTIVITY#3"
+author: "BRIAN KENNETH SOLAS"
+date: "2024-03-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library(rvest)
+library(httr)
+library(polite)
+
+
+polite::use_manners(save_as = 'polite_scrape.R')
+
+m_urls <- c("https://www.imdb.com/title/tt9018736/reviews/?ref_=ttrt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "avatar1.csv", row.names = FALSE)
+print(review_df)
+
+```
+
+
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt9362722/reviews?sort=curated&dir=desc&ratingFilter=0" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "spider1.csv", row.names = FALSE)
+print(review_df)
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt0145487/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "spider2.csv", row.names = FALSE)
+print(review_df)
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt4633694/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "spider3.csv", row.names = FALSE)
+print(review_df)
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt2250912/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "spider4.csv", row.names = FALSE)
+print(review_df)
+
+
+
+```
+
+```{r}
+
+
+m_urls <- c("https://www.imdb.com/title/tt0316654/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "spider5.csv", row.names = FALSE)
+print(review_df)
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt0413300/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "spider6.csv", row.names = FALSE)
+print(review_df)
+
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt0848228/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "avengers1.csv", row.names = FALSE)
+print(review_df)
+
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt2395427/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "avengers2.csv", row.names = FALSE)
+print(review_df)
+
+
+```
+
+```{r}
+
+m_urls <- c("https://www.imdb.com/title/tt4154756/reviews/?ref_=tt_ql_2" )
+
+users <- c()
+comments <- c()
+ratings <- c()
+dates <- c()
+
+for (m_url in m_urls) {
+  while(length(comments) < 300) {
+    page_content <- read_html(m_url)
+    
+    user_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(1)") %>%
+      html_text()
+    
+    comment_nodes <- page_content %>%
+      html_nodes(".text.show-more__control") %>%
+      html_text()
+    
+    rating_nodes <- page_content %>%
+      html_nodes(".review-container .ipl-ratings-bar span:nth-child(2)") %>%
+      html_text()
+    
+    date_nodes <- page_content %>%
+      html_nodes(".display-name-date span:nth-child(2)") %>%
+      html_text()
+    
+    users <- c(users, user_nodes)
+    comments <- c(comments, comment_nodes)
+    ratings <- c(ratings, rating_nodes)
+    dates <- c(dates, date_nodes)
+    
+    next_page_link <- page_content %>%
+      html_nodes(".load-more-data") %>%
+      html_attr("data-key")
+    
+    
+  }
+}
+
+review_df <- data.frame(
+  User = users[1:300],
+  Comment = comments[1:300],
+  Rating = ratings[1:300],
+  Date = dates[1:300]
+)
+
+write.csv(review_df, file = "avengers3.csv", row.names = FALSE)
+print(review_df)
+
+
+```
+
+```{r}
+
+
+library(xlsx) 
+
+
+mov1 <- read.csv("/cloud/project/Activity#3/avatar1.csv")
+mov2 <- read.csv("/cloud/project/Activity#3/spider1.csv")
+mov3 <- read.csv("/cloud/project/Activity#3/spider2.csv")
+mov4 <- read.csv("/cloud/project/Activity#3/spider3.csv")
+mov5 <- read.csv("/cloud/project/Activity#3/spider4.csv")
+mov6 <- read.csv("/cloud/project/Activity#3/spider5.csv")
+mov7 <- read.csv("/cloud/project/Activity#3/spider6.csv")
+mov8 <- read.csv("/cloud/project/Activity#3/avengers1.csv")
+mov9 <- read.csv("/cloud/project/Activity#3/avengers2.csv")
+mov10 <- read.csv("/cloud/project/Activity#3/avengers3.csv")
+
+merged_movies <- rbind(mov1,mov2,mov3,mov4,mov5,mov6,mov7,mov8,mov9,mov10)
+
+write.csv(merged_movies, "merged_movs.csv", row.names = FALSE)
+
+
+df<- read.csv("/cloud/project/Activity#3/merged_movs.csv") 
+
+xlsx::write.xlsx(df, 
+                 "movie_ratings.xls", 
+                 col.names=TRUE, 
+                 row.names=TRUE, 
+                 sheetName="sample")
+
+```
+
+
+
+
+
+
+
